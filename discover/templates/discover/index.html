@@ -75,36 +75,48 @@
 						<div class="grids_of_3">
 							<div class="grid1_of_3_1">
 								<div class="grid1_of_3_1_top">
-{#									<h4>巅&nbsp;峰&nbsp;榜<br><span>流&nbsp;行&nbsp;指&nbsp;数</span></h4>#}
 									<div class="grid1_of_3_1_sing">
+{#                                        {% for music in recommend_music_list %}#}
 										{% for r in music_one %}
-                                            <p><b>{{ forloop.counter | add:0 }}. </b>{{ r.music_name }}<b>播放次数{{ r.play_No }}</b></p>
+                                            <p>
+                                                <b style="float: left;padding-left: 20px;">{{ forloop.counter | add:0 }}&nbsp;&nbsp;&nbsp;</b>
+                                                <a href="{% url 'player:player' %}?list_id={{ r.list_id }}" target="player_window">{{ r.music_name }}</a>
+{#                                                <b>热度：{{ r.play_No }}</b>#}
+                                            </p>
                                         {% endfor %}
+{#                                        {% endfor %}#}
 									</div>
 								</div>
 							</div>
 							<div class="grid1_of_3_3">
 								<div class="grid1_of_3_1_top">
-                                        {% for r in music_two %}
-                                            <p><b>{{ forloop.counter | add:6 }}. </b>{{ r.music_name }}播放次数:<b>{{ r.play_No }}</b></p>
+										{% for r in music_two %}
+                                            <p>
+                                                <b style="float: left;padding-left: 20px;">{{ forloop.counter | add:6 }}&nbsp;&nbsp;&nbsp;</b>
+                                                <a href="{% url 'player:player' %}?list_id={{ r.list_id }}" target="player_window">{{ r.music_name }}</a>
+{#                                                <b>热度：{{ r.play_No }}</b>#}
+                                            </p>
                                         {% endfor %}
-{#									<h4>巅&nbsp;峰&nbsp;榜 <br><span>热歌 </span></h4>#}
 								</div>
 							</div>
 							<div class="grid1_of_3_2">
 								<div class="grid1_of_3_1_top">
-{#								<h4>巅&nbsp;峰&nbsp;榜<br><span></span>新歌</h4>#}
-                                {% for r in music_three %}
-                                    <p><b>{{ forloop.counter | add:12 }}. </b>{{ r.music_name }}<b>播放次数{{ r.play_No }}</b></p>
-                                {% endfor %}
+                                    {% for r in music_three %}
+                                        <p><b style="float: left;padding-left: 20px;">{{ forloop.counter | add:12 }}&nbsp;&nbsp;&nbsp; </b>
+                                           <a href="{% url 'player:player' %}?list_id={{ r.list_id }}" target="player_window">{{ r.music_name }}</a>
+{#                                            <b>播放次数{{ r.play_No }}</b>#}
+                                        </p>
+                                    {% endfor %}
 								</div>
 							</div>
-                            <div class="grid1_of_3_2">
+                            <div class="grid1_of_3_4">
 								<div class="grid1_of_3_1_top">
-{#								<h4>巅&nbsp;峰&nbsp;榜<br><span></span>新歌</h4>#}
-                                {% for r in music_four%}
-                                    <p><b>{{ forloop.counter | add:18 }}. </b>{{ r.music_name }}<b>播放次数{{ r.play_No }}</b></p>
-                                {% endfor %}
+                                    {% for r in music_four%}
+                                        <p><b style="float: left;padding-left: 20px;">{{ forloop.counter | add:18 }}&nbsp;&nbsp;&nbsp; </b>
+                                           <a href="{% url 'player:player' %}?list_id={{ r.list_id }}" target="player_window">{{ r.music_name }}</a>
+{#                                            <b>播放次数{{ r.play_No }}</b>#}
+                                        </p>
+                                    {% endfor %}
 								</div>
 							</div>
 							<div class="clear"></div>

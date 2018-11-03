@@ -83,28 +83,14 @@
                     <h4 class="title">用户登陆</h4>
                     <div id="loginbox" class="loginbox">
                         <form action="{% url 'login' %}" method="post" name="login" id="login-form">
-{#                            {% load label %}#}
                             <fieldset class="input">
-
-{#                                <p id="login-form-username">#}
-{#                                    <label class="tpass-label tpass-label-phone">手机号</label>#}
-{#                                    {{ login_form.user_phone }}#}
-{#                                </p>#}
-{##}
-{#                                <p id="login-form-password">#}
-{#                                    <label class="tpass-label tpass-label-phone">密码</label>#}
-{#                                    {{ login_form.pwd }}#}
-{#                                </p>#}
                                 <p class="tpass-form-item">
                                     <label class="tpass-label tpass-label-phone">手机号</label>
-{#                                    <input type="text" name="phone" class="tpass-text-input" placeholder="用于登录和找回密码" autocomplete="off" maxlength="11" n-type="phone" a-type="focus" />#}
-{#                                    <span class="tpass-item-error tpass-item-error-phone"></span>#}
                                     {{ login_form.user_phone}}
                                     {{ login_form.user_phone.error_messages }}
                                 </p>
                                 <p class="tpass-form-item">
                                     <label class="tpass-label tpass-label-password">密码</label>
-{#                                    <input type="password" name="password" class="tpass-text-input" placeholder="6-16位密码" autocomplete="off" n-type="password" a-type="focus" />#}
                                       {{ login_form.pwd }}
                                       {{ login_form.pwd.error_messages }}
                                 </p>

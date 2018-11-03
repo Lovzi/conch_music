@@ -43,98 +43,10 @@
 {#        <img src="../../../static/images/add_song.png" class="add_song">#}
 {#        <label class="new_song">新建歌单</label>#}
 {#    </div>#}
+
     <div>
 {#        <img src="../../../static/images/add_song.png" class="add_song">#}
-        <input data-this_user="{{ this_user.user_id }}" data-that_user="{{ that_user.user_id }}" id="btn" class="new-sheet" type="button" value="新建歌单" style="margin-top: 20px; cursor: pointer">
-    </div>
-    <!-- 自定义弹出框 -->
-{#    <div id="textPopBox" class="popBox" >#}
-{#        <div class=" popBoxHandle">#}
-{#            <h5 style="">创建新歌单</h5>#}
-{#        </div>#}
-{#        <form action="" method="post">#}
-{#            <table width="100%" cellspacing="5">#}
-{#                <tr>#}
-{##}
-{#                    <td><label class="form-lable">歌单名称：</label> <span name="project_name"><input type="text" name="" id="" value="" class="form_txt__input" /></span></td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td colspan="3" class="td_style">#}
-{#                        <input id = "ok" type="button" value="确认" class="button_style1" >#}
-{#                        <input id = "cancel" type="button" value="取消" class = "button_style">#}
-{#                    </td>#}
-{#                </tr>#}
-{#            </table>#}
-{#        </form>#}
-{#    </div>#}
-
-
-{#    <script type="text/javascript">#}
-{#        //初始化弹出框#}
-{#        var p = new PopUp({#}
-{#            //isScroll:'disabled'#}
-{#            //enableDrag:'disabled'#}
-{#            //enableShadow:'disabled'#}
-{#            //id为你自己自定义的弹出框div的id#}
-{#            id: "textPopBox"#}
-{#        });#}
-{##}
-{#        //缩放窗口时重新定位弹出框及遮罩层的宽度和高度#}
-{#        EventUtil.addEvent(window, 'resize', function () {#}
-{#            p.setPosition();#}
-{#            //如果开启遮罩层，遮罩层元素存在，则重新定位遮罩层#}
-{#            p.enableShadow && p.enableShadow.shadow && p.enableShadow.setProperty(p.enableShadow.shadow);#}
-{#        });#}
-{#        EventUtil.addEvent(EventUtil._$('btn'), 'click', function () {#}
-{#            p.show({//定义坐标，如果缺省则居中显示#}
-{#                //            x:100,#}
-{#                //            y:100#}
-{#            });#}
-{#        });#}
-{#        EventUtil.addEvent(EventUtil._$('ok'), 'click', function () {#}
-{#            //自定义点击确定按钮之后得操作#}
-{#            let sheetName = $("#backReason").val();#}
-{#            alert(sheetName)#}
-{#            if(sheetName && sheetName.replace(' ', '')){#}
-{#                userId = $(this).data('user_id');#}
-{#                $.post('/my_music/new_sheet/', {'sheet_name':sheetName, 'user':userId} ,function(response,status,xhr) {#}
-{#                    $('.sheet-list').html(response);#}
-{#                })#}
-{#            }#}
-{#            //隐藏弹出框#}
-{#            p.hide();#}
-{#        });#}
-{#        EventUtil.addEvent(EventUtil._$('cancel'), 'click', function () {#}
-{#            //自定义点击取消按钮之后得操作#}
-{##}
-{#            //隐藏弹出框#}
-{#            p.hide();#}
-{#        });#}
-{##}
-{#        //当按下ESC键时关闭弹出框#}
-{##}
-{#        EventUtil.addEvent(window, 'load', function () {#}
-{#            if ((isIE6 || isOpera) && p.isScroll != null && p.isScroll == 'enabled') {#}
-{#                EventUtil.addEvent(window, 'scroll', function () {#}
-{#                    setTimeout(function () {#}
-{#                        p.setPosition();#}
-{#                    }, 100);#}
-{#                });#}
-{#            }#}
-{#        });#}
-{##}
-{#        //单选按钮的点击切换事件#}
-{#        function openText(self) {#}
-{#            var value = $(self).val();#}
-{#            if ("true" == value) {#}
-{#                $('#reasonText').css("display", "");#}
-{#            } else {#}
-{#                $('#reasonText').css("display", "none");#}
-{#            }#}
-{#        }#}
-{#    </script>#}
-{#=======#}
-{#        <input id="btn" class="new-sheet" type="button" value="创建歌单" style="margin-top: 20px;">#}
+{#        <input data-this_user="{{ this_user.user_id }}" data-that_user="{{ that_user.user_id }}" id="btn" class="new-sheet" type="button" value="新建歌单" style="margin-top: 20px; cursor: pointer">#}
 {#    </div>#}
 {#    <!-- 自定义弹出框 -->#}
 {#    <div id="textPopBox" class="popBox" >#}
@@ -200,12 +112,90 @@
 {#            }#}
 {#        }#}
 {#    </script>#}
-{#>>>>>>> 2fa279efc9fb28403d28774e9b2cb8e3483054b3#}
+{#    <div id="textPopBox" class="popBox" >#}
+{#        <div class=" popBoxHandle">#}
+{#            <h5 style="">创建新歌单</h5>#}
+{#        </div>#}
+{#        <form action="" method="post">#}
+{#            <table width="100%" cellspacing="5">#}
+{#                <tr>#}
 {##}
-
-
-
-
+{#                    <td><label class="form-lable">歌单名称：</label> <span name="project_name"><input type="text" name="" id="" value="" class="form_txt__input" /></span></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="3" class="td_style">#}
+{#                        <input id = "ok" type="button" value="确认" class="button_style1" >#}
+{#                        <input id = "cancel" type="button" value="取消" class = "button_style">#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </form>#}
+{#    </div>#}
+{#    <script type="text/javascript">#}
+{#        //初始化弹出框#}
+{#        var p = new PopUp({#}
+{#            //isScroll:'disabled'#}
+{#            //enableDrag:'disabled'#}
+{#            //enableShadow:'disabled'#}
+{#            //id为你自己自定义的弹出框div的id#}
+{#            id: "textPopBox"#}
+{#        });#}
+{##}
+{#        //缩放窗口时重新定位弹出框及遮罩层的宽度和高度#}
+{#        EventUtil.addEvent(window, 'resize', function () {#}
+{#            p.setPosition();#}
+{#            //如果开启遮罩层，遮罩层元素存在，则重新定位遮罩层#}
+{#            p.enableShadow && p.enableShadow.shadow && p.enableShadow.setProperty(p.enableShadow.shadow);#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('btn'), 'click', function () {#}
+{#            p.show({//定义坐标，如果缺省则居中显示#}
+{#                //            x:100,#}
+{#                //            y:100#}
+{#            });#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('ok'), 'click', function () {#}
+{#            //自定义点击确定按钮之后得操作#}
+{#            let sheetName = $("#backReason").val();#}
+{#            alert(sheetName)#}
+{#            if(sheetName && sheetName.replace(' ', '')){#}
+{#                userId = $(this).data('user_id');#}
+{#                $.post('/my_music/new_sheet/', {'sheet_name':sheetName, 'user':userId} ,function(response,status,xhr) {#}
+{#                    $('.sheet-list').html(response);#}
+{#                })#}
+{#            }#}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('cancel'), 'click', function () {#}
+{#            //自定义点击取消按钮之后得操作#}
+{##}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{##}
+{#        //当按下ESC键时关闭弹出框#}
+{##}
+{#        EventUtil.addEvent(window, 'load', function () {#}
+{#            if ((isIE6 || isOpera) && p.isScroll != null && p.isScroll == 'enabled') {#}
+{#                EventUtil.addEvent(window, 'scroll', function () {#}
+{#                    setTimeout(function () {#}
+{#                        p.setPosition();#}
+{#                    }, 100);#}
+{#                });#}
+{#            }#}
+{#        });#}
+{##}
+{#        //单选按钮的点击切换事件#}
+{#        function openText(self) {#}
+{#            var value = $(self).val();#}
+{#            if ("true" == value) {#}
+{#                $('#reasonText').css("display", "");#}
+{#            } else {#}
+{#                $('#reasonText').css("display", "none");#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+{
 
     <div class="mod_playlist_text js_list">
 		<ul class="playlist__header">
