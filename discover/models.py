@@ -101,7 +101,7 @@ class SingerInfo(models.Model):
 
     singer_text = models.TextField()
 
-    fanNo = models.IntegerField()
+    # fanNo = models.IntegerField()
 
     class Meta:
         db_table = 'singer_info'
@@ -114,9 +114,9 @@ class UserSheet(models.Model):
 
     user_id = models.IntegerField()
 
-    sheet_num = models.IntegerField(default=0)
+    # sheet_num = models.IntegerField(default=0)
 
-    sheet_pic = models.CharField(max_length=100, default='/images/default_music_pic.png')
+    # sheet_pic = models.CharField(max_length=100, default='/images/default_music_pic.png')
 
     class Meta:
         db_table = 'user_sheet'

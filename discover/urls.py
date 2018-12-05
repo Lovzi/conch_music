@@ -19,7 +19,4 @@ from . import views
 
 urlpatterns = [
     url(r'^singer/(?P<singer_name>(\w|\.)+$)', views.singer, name='singer'),
-
-    url(r'^singer/(?P<singer_name>\w+$)', views.singer, name='singer'),
-
 ]

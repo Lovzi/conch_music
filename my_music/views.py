@@ -24,11 +24,11 @@ def my_music(request):
                                                           'sheet_name': '喜欢',
                                                           'music_list': music_list})
     else:
-        music_sheet_list = MusicSheet.objects.filter(sheet_id=sheet_id)
+        music_sheet_list = MusicSheet.objects.filter(sheet_id=sheet_id).values('user_id')
         music_list = []
         if music_sheet_list:
-            for music_sheet in music_sheet_list:
-                music_list.append(MusicList.objects.filter(list_id=music_sheet.music_id)[0])
+            # for music_sheet in music_sheet_list:
+            music_list = MusicList.objects.filter(list_id__in=music_sheet_list)
         sheet_name = UserSheet.objects.filter(sheet_id=sheet_id)[0].sheet_name
         return render(request, 'my_music/my_music.html', {'that_user': user,
                                                           'this_user': request.session,
@@ -41,10 +41,10 @@ def attention(request, singer_id=None):
     if not user_id:
         user_id = request.session.get('user_id', None)
     user = User.objects.filter(user_id=user_id)[0]
-    singer_id_list = Friend.objects.filter(user_id = user_id, follow_id__lt=1000000)
-    singer_list = []
-    for singer_id in singer_id_list:
-        singer_list.append(SingerInfo.objects.filter(singer_id=singer_id.follow_id)[0])
+    singer_id_list = Friend.objects.filter(user_id = user_id, follow_id__lt=1000000).values('follow_id')
+    # singer_list = []
+    # for singer_id in singer_id_list:
+    singer_list = append(SingerInfo.objects.filter(singer_id=singer_id.follow_id)[0])
     return render(request, 'my_music/focus.html', {'singer_list': singer_list,
                                                    'this_user': request.session,
                                                    'that_user':user})
@@ -100,6 +100,7 @@ def new_sheet(request):
         UserSheet.objects.create(sheet_name=sheet_name, user_id=user_id)
     user_list = UserSheet.objects.filter(user_id=user_id)
     return render(request, 'my_music/sheet_list.html', {'sheet_list': user_list})
+
 
 def del_sheet(request):
     sheet_id = request.POST.get('sheet_id', None)

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^+dt-at*s09-h51__!u6dd7apsj05*iyu#coic3bfsfxqpndev'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -89,11 +89,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Conch_music',
+        'NAME': 'ConchMusic',
          # 开发环境可用，生产环境不要用
-        'USER': 'music',
-        'PASSWORD': '123456',
-        'HOST': '10.8.44.201',
+        'USER': 'root',
+        'PASSWORD': 'bamboo',
+        'HOST': '',
         # 'HOST': '',
         'PORT': '',
     }
@@ -139,3 +139,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/bamboo/develop/django/ConchMusic/static/'

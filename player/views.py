@@ -110,18 +110,19 @@ def delete(request):
 
 
 def play_singer(request):
-    user_history_id = ""
-    if request.META.get('HTTP_X_FORWARDED_FOR', None):
-        user_history_id = request.META['HTTP_X_FORWARDED_FOR']
-    else:
-        user_history_id = request.META['REMOTE_ADDR']
+    user_id = request.session.get('user_id')
+    # user_history_id = ""
+    # if request.META.get('HTTP_X_FORWARDED_FOR', None):
+    #     user_history_id = request.META['HTTP_X_FORWARDED_FOR']
+    # else:
+    #     user_history_id = request.META['REMOTE_ADDR']
     singer = request.GET.get('singer', None)
     music_list = MusicList.objects.filter(singer=singer)
     for music in music_list:
         print(music.list_id);
         if not MusicHistory.objects.filter(Hmusic_id=music.list_id):
-            MusicHistory.objects.create(user_id=user_history_id, Hmusic_id=music.list_id)
-    music_history_list = MusicHistory.objects.filter(user_id=user_history_id).order_by('-history_id')
+            MusicHistory.objects.create(user_id=user_id, Hmusic_id=music.list_id)
+    music_history_list = MusicHistory.objects.filter(user_id=user_id).order_by('-history_id')
     music_list = []
     singer_list = []
     for mhl in music_history_list:
