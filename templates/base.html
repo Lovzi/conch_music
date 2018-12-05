@@ -60,7 +60,7 @@
 								<!-- Login Ends Here -->
 							</li>
 							<li id="signupContainer">
-								{% if user.user_id %}
+								{% if this_user.user_id %}
                                     <a class="signup" id="signupButton" href="{% url 'logout' %}"><span>注销</span></a>
                                 {% else %}
                                     <a class="signup" id="signupButton" href="{% url 'register' %}"><span>注册</span></a>

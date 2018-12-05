@@ -9,6 +9,7 @@
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/music_list.css' %}">
     <link rel="stylesheet" type="text/css" href='{%  static "css/my_music.css"%}' />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_to_sheet.css' %}">
     <style>
         .search_type{
             width: 1200px;
@@ -25,6 +26,32 @@
         .search_type a:hover{
             color: #2caf6f;
             cursor: pointer;
+        }
+
+    </style>
+        <style>
+        .singer_pic img{
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .singer_msg{
+            width:1200px;
+            height:250px;
+            margin: 60px auto 10px;
+        }
+        .singer_pic{
+            float: left;
+        }
+        .singer_text p{
+            width: 75%;
+            float: right;
+            height: 240px;
+            margin-left: 8px;
+            margin-right: 24px;
+            text-align: justify;
+            overflow: auto;
         }
     </style>
 {% endblock %}
@@ -65,7 +92,7 @@
                             <li><div class="music_name"><a>{{ music.music_name }}</a></div></li>
                             <li><div class="singer"><a >{{ music.singer }}</a></div></li>
                             <li><div class="album"><a >{{ music.music_name | default:'无名'}}</a></div></li>
-                            <li><div class="time"><a >{{ music.time | default:'3:00'}}</a></div></li>
+                            <li><div class="time"><a >{{ music.length_time | default:'3:00'}}</a></div></li>
                         </ul>
                     </div>
                 {% endfor %}
@@ -87,6 +114,7 @@
         {% endif %}
     </div>
     <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/music-list.js' %}"></script>
 {% endblock %}
 
 

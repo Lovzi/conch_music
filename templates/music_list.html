@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/music_list.css' %}">
     <link rel="stylesheet" type="text/css" href='{%  static "css/my_music.css"%}' />
     <link rel="stylesheet" type="text/css" href="{% static 'css/add_to_sheet.css' %}">
-
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
     {% block head_music_list %}
@@ -33,7 +32,7 @@
     {% endblock %}
     <div class="music_list">
         <div class="mod_songlist_toolbar">
-            <a href="#" class="mod_btn_green js_all_play" ><i class="mod_btn_green__icon_play"></i>播放全部</a>
+            <a href="{% url 'player:play_singer' %}?singer={{ singer.singer_name }}" class="mod_btn_green js_all_play" target="player_window" ><i class="mod_btn_green__icon_play"></i>播放全部</a>
             <a href="#" class="mod_btn js_all_fav" ><i class="mod_btn__icon_add"></i>添加到</a>
             <a href="#" class="mod_btn js_all_down" ><i class="mod_btn__icon_down"></i>下载</a>
             <a href="#" class="mod_btn js_batch" ><i class="mod_btn__icon_batch"></i>批量操作</a>
@@ -78,5 +77,27 @@
     </div>
     <div class="add-to-sheet">
     </div>
+    <script>
+        let ELEMENT = {
+            rows: '.rows',
+            linkDownload: '.download_a',
+            linkAdd: '.add_a',
+            linkPlay: '.play_a',
+            addToSheet: '.mod_btn js_all_fav',
+            singleDeleteMusic: '.single-delete-music',
+            time: '.time',
+        };
+        $(ELEMENT.rows).mouseover(function (e) {
+            $(this).find(ELEMENT.linkDownload).css('display', 'block');
+            $(this).find(ELEMENT.linkAdd).css('display', 'block');
+            $(this).find(ELEMENT.linkPlay).css('display', 'block');
+        });
+
+        $(ELEMENT.rows).mouseout(function (e) {
+            $(this).find(ELEMENT.linkDownload).css('display', 'none');
+            $(this).find(ELEMENT.linkAdd).css('display', 'none');
+            $(this).find(ELEMENT.linkPlay).css('display', 'none');
+        });
+    </script>
     <script type="text/javascript" src="{% static 'js/music-list.js' %}"></script>
 {% endblock %}

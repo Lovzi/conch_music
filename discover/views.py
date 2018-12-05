@@ -25,9 +25,7 @@ def do_login(request):
                 request.session['image'] = user[0].image
                 request.session['attention'] = user[0].attention
                 request.session['Fan'] = user[0].Fan
-                # print(request.session.get('previous_page'))
-                # print('sdfdsf')
-                if request.session.get('previous_page', '/') == 'http://localhost:8000/register/':
+                if request.session.get('previous_page', '/')[-10:] == '/register/':
                     return redirect('/')
                 return redirect(request.session.get('previous_page','/'))
             else:
@@ -95,7 +93,7 @@ def search(request):
             singer_list = SingerInfo.objects.filter(singer_name=search)
             if singer_list:
                 music_list = MusicList.objects.filter(singer=search)
-                return render_to_response('discover/singer_details.html',
+                return render_to_response('discover/search_singer.html',
                                               {'user': request.session, 'singer': singer_list[0],'search':search , 'music_list':music_list})
             else:
                 return render_to_response('discover/search_faild.html', {'this_user': request.session, 'search':search})

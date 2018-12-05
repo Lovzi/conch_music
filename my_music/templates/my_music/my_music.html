@@ -4,7 +4,7 @@
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/music_list.css' %}">
     <link rel="stylesheet" type="text/css" href='{%  static "css/my_music.css"%}' />
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_to_sheet.css' %}">
 
 
 {% endblock %}
@@ -81,55 +81,52 @@
                             </ul>
                         </div>
                     {% endfor %}
-                                         <script>
-                                    let ELEMENT = {
-                                        rows: '.rows',
-                                        linkDownload: '.download_a',
-                                        linkAdd: '.add_a',
-                                        linkPlay: '.play_a',
-                                        addToSheet: '.mod_btn js_all_fav',
-                                        singleDeleteMusic: '.single-delete-music',
-                                        time: '.time',
-                                    };
-                                $(ELEMENT.rows).mouseover(function (e) {
-                                    $(this).find(ELEMENT.linkDownload).css('display', 'block');
-                                    $(this).find(ELEMENT.linkAdd).css('display', 'block');
-                                    $(this).find(ELEMENT.linkPlay).css('display', 'block');
-                                    this_user = $(this).data('this_user');
-                                    that_user = $(this).data('that_user');
-                                    if(this_user === that_user){
-                                        $(this).find(ELEMENT.time).css('display', 'none');
-                                        $(this).find(ELEMENT.singleDeleteMusic).css('display', 'block');
-                                    }
-                                });
+                     <script>
+                            let INNERELEMENT = {
+                                    rows: '.rows',
+                                    linkDownload: '.download_a',
+                                    linkAdd: '.add_a',
+                                    linkPlay: '.play_a',
+                                    addToSheet: '.mod_btn js_all_fav',
+                                    singleDeleteMusic: '.single-delete-music',
+                                    time: '.time',
+                                    singerAddToSheet: '.add',
 
-                                $(ELEMENT.rows).mouseout(function (e) {
-                                    $(this).find(ELEMENT.linkDownload).css('display', 'none');
-                                    $(this).find(ELEMENT.linkAdd).css('display', 'none');
-                                    $(this).find(ELEMENT.linkPlay).css('display', 'none');
-                                    $(this).find(ELEMENT.time).css('display', 'block');
-                                    $(this).find(ELEMENT.singleDeleteMusic).css('display', 'none');
-                                });
-                                $(ELEMENT.singleDeleteMusic).click(function () {
-                                    musicId = $(this).data('music_id');
-                                    sheet_id = $(this).data('sheet');
-                                    $.post('/my_music/del_music/', {'music': musicId, 'sheet': sheet_id}, function(response, status, xhr) {
-                                        $('.list_content').html(response)
-                                    })
+                                };
+                            $(INNERELEMENT.rows).mouseover(function (e) {
+                                $(this).find(INNERELEMENT.linkDownload).css('display', 'block');
+                                $(this).find(INNERELEMENT.linkAdd).css('display', 'block');
+                                $(this).find(INNERELEMENT.linkPlay).css('display', 'block');
+                                this_user = $(this).data('this_user');
+                                that_user = $(this).data('that_user');
+                                if(this_user === that_user){
+                                    $(this).find(INNERELEMENT.time).css('display', 'none');
+                                    $(this).find(INNERELEMENT.singleDeleteMusic).css('display', 'block');
+                                }
+                            });
+
+                            $(INNERELEMENT.rows).mouseout(function (e) {
+                                $(this).find(INNERELEMENT.linkDownload).css('display', 'none');
+                                $(this).find(INNERELEMENT.linkAdd).css('display', 'none');
+                                $(this).find(INNERELEMENT.linkPlay).css('display', 'none');
+                                $(this).find(INNERELEMENT.time).css('display', 'block');
+                                $(this).find(INNERELEMENT.singleDeleteMusic).css('display', 'none');
+                            });
+                            $(INNERELEMENT.singleDeleteMusic).click(function () {
+                                musicId = $(this).data('music_id');
+                                sheet_id = $(this).data('sheet');
+                                $.post('/my_music/del_music/', {'music': musicId, 'sheet': sheet_id}, function(response, status, xhr) {
+                                    $('.list_content').html(response)
                                 })
-                            </script>
+                            })
+                     </script>
+                    <script type="application/javascript" src="{% static 'js/music-list.js' %}"></script>
                 </div>
 
-                <div class="mod_page_nav"><strong class="current">1</strong>
-					<a href="" class="js_pageindex" data-index="2" hidefocus="">2</a>
-					<a href="" class="js_pageindex" data-index="3" hidefocus="">3</a>
-					<a href="" class="js_pageindex" data-index="4" hidefocus="">4</a><strong class="more">...</strong>
-					<a href="" class="js_pageindex" data-index="19" hidefocus="">19</a>
-					<a href="" class="next js_pageindex" data-index="2" title="下一页" hidefocus=""><span></span></a>
-				</div>
             </div>
 {#        </div>#}
-
+        </div>
+        <div class="add-to-sheet">
     </div>
     {% else %}
         <div class="login_bck">
@@ -142,25 +139,5 @@
             </div>
         </div>
     {% endif %}
-     <script type="text/javascript" src="{% static 'js/music-list.js' %}"></script>
 {% endblock %}
-
-
-
-{#<div class="rows">#}
-{#                            <ul>#}
-{#                                <li>#}
-{#                                    <div class="music_name">#}
-{#                                        <a class="music_a">{{ music.music_name }}</a>#}
-{#                                        <div class="download"><a class="download_a" href="{% static music.music_path %}" download="{{ music.music_name }}.mp3"></a></div>#}
-{#                                        <div class="add"><a class="add_a"></a></div>#}
-{#                                        <div class="play" data-music_path="{{ music.music_path }}"><a href="{% url 'player:player'%}?list_id={{ music.list_id }}" class="play_a"></a></div>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                                <li><div class="singer"><label>{{ music.singer }}</label></div></li>#}
-{#                                <li><div class="album"><a><p>{{ music.music_name | default:'无名'}}</p></a></div></li>#}
-{#                                <li><div class="time"><label>{{ music.length_time | default:'3:00'}}</label></div></li>#}
-{#                            </ul>#}
-{#                        </div>#}
-
 

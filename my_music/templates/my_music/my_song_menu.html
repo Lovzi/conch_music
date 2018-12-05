@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/music_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'css/my_music.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/popDrag.css" %}">
+
+{% endblock %}
+
+    start mod_profile
+{% block main %}
+
+<div class="mod_profile" style="">
+    <div class="section_inner">
+        <div class="profile__cover_link">
+            <img src="{% static that_user.image  %}">
+        </div>
+        <h1 class="profile__tit">
+        <span class="profile__name">{{ that_user.user_nickname }}</span>
+        </h1>
+        <ul class="mod_user_statistic">
+            <li class="user_statistic__item">
+                <a href="{% url 'my_music:attention' %}?user={{ that_user.user_id }}"><strong>{{ that_user.attention }}</strong><span>关注</span></a>
+            </li>
+            <li>
+                <a href="{% url 'my_music:fans' %}?user={{ that_user.user_id }}"><strong>{{ that_user.Fan }}</strong><span>粉丝</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="song">
+    <div class="song_top">
+        <a class="my_like my_like_box" href="{% url 'my_music:my_music' %}?user={{ that_user.user_id }}">喜欢</a>
+        <a class="my_like my_like_box" href="#">歌单</a>
+        <a class="my_like" href="{% url 'my_music:attention' %}?user={{ that_user.user_id }}">关注</a>
+        <a class="my_like" href="{% url 'my_music:fans' %}?user={{ that_user.user_id }}">粉丝</a>
+    </div>
+
+{#    <div class="new-sheet"><i class="add_img"></i><label>新建歌单</label></div>#}
+{#    <div class="new-sheet"><i class="add_img"></i>#}
+{#        <img src="../../../static/images/add_song.png" class="add_song">#}
+{#        <label class="new_song">新建歌单</label>#}
+{#    </div>#}
+{#<<<<<<< HEAD#}
+{#    <div>#}
+{#=======#}
+    <div>
+{#>>>>>>> c45983ab21204b14dfe8fea9ff24b60bb0a8d0bb#}
+{#        <img src="../../../static/images/add_song.png" class="add_song">#}
+        <input data-this_user="{{ this_user.user_id }}" data-that_user="{{ that_user.user_id }}" id="btn" class="new-sheet" type="button" value="新建歌单" style="margin-top: 20px; cursor: pointer">
+    </div>
+{#    <!-- 自定义弹出框 -->#}
+{#    <div id="textPopBox" class="popBox" >#}
+{#        <div class=" popBoxHandle">#}
+{#            <h5 style="">创建新歌单</h5>#}
+{#        </div>#}
+{#        <form action="" method="post">#}
+{#            <table width="100%" cellspacing="5">#}
+{#                <tr>#}
+{#                    <td><label class="form-lable">歌单名称：</label> <span name="project_name"><input type="text" name="" id="" value="" class="form_txt__input" /></span></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="3" class="td_style">#}
+{#                        <input id = "ok" type="button" value="确认" class="button_style1" >#}
+{#                        <input id = "cancel" type="button" value="取消" class = "button_style">#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </form>#}
+{#    </div>#}
+{#  <script type="text/javascript">#}
+{#        //初始化弹出框#}
+{#        let p = new PopUp({#}
+{#            //id为你自己自定义的弹出框div的id#}
+{#            id: "textPopBox"#}
+{#        });#}
+{#        //缩放窗口时重新定位弹出框及遮罩层的宽度和高度#}
+{#        EventUtil.addEvent(window, 'resize', function () {#}
+{#            p.setPosition();#}
+{#            //如果开启遮罩层，遮罩层元素存在，则重新定位遮罩层#}
+{#            p.enableShadow && p.enableShadow.shadow && p.enableShadow.setProperty(p.enableShadow.shadow);#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('btn'), 'click', function () {#}
+{#            p.show({//定义坐标，如果缺省则居中显示#}
+{#            });#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('ok'), 'click', function () {#}
+{#            //自定义点击确定按钮之后得操作#}
+{#            let sheetName = ("#backReason").val();#}
+{#            $('.new-sheet').click(function () {#}
+{#                let sheetName = prompt();#}
+{#                $.post('/my_music/new_sheet/', {'sheet_name':sheetName} ,function(response,status,xhr) {#}
+{#                 $('.sheet-list').html(response)#}
+{##}
+{#        })#}
+{#    });#}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('cancel'), 'click', function () {#}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{##}
+{#        //单选按钮的点击切换事件#}
+{#        function openText(self) {#}
+{#            let value = $(self).val();#}
+{#            if ("true" == value) {#}
+{#                $('#textPopBox').css("display", "");#}
+{#            }#}
+{#            else {#}
+{#                $('#textPopBox').css("display", "none");#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+{#    <div id="textPopBox" class="popBox" >#}
+{#        <div class=" popBoxHandle">#}
+{#            <h5 style="">创建新歌单</h5>#}
+{#        </div>#}
+{#        <form action="" method="post">#}
+{#            <table width="100%" cellspacing="5">#}
+{#                <tr>#}
+{##}
+{#                    <td><label class="form-lable">歌单名称：</label> <span name="project_name"><input type="text" name="" id="" value="" class="form_txt__input" /></span></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="3" class="td_style">#}
+{#                        <input id = "ok" type="button" value="确认" class="button_style1" >#}
+{#                        <input id = "cancel" type="button" value="取消" class = "button_style">#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </form>#}
+{#    </div>#}
+{#    <script type="text/javascript">#}
+{#        //初始化弹出框#}
+{#        var p = new PopUp({#}
+{#            //isScroll:'disabled'#}
+{#            //enableDrag:'disabled'#}
+{#            //enableShadow:'disabled'#}
+{#            //id为你自己自定义的弹出框div的id#}
+{#            id: "textPopBox"#}
+{#        });#}
+{##}
+{#        //缩放窗口时重新定位弹出框及遮罩层的宽度和高度#}
+{#        EventUtil.addEvent(window, 'resize', function () {#}
+{#            p.setPosition();#}
+{#            //如果开启遮罩层，遮罩层元素存在，则重新定位遮罩层#}
+{#            p.enableShadow && p.enableShadow.shadow && p.enableShadow.setProperty(p.enableShadow.shadow);#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('btn'), 'click', function () {#}
+{#            p.show({//定义坐标，如果缺省则居中显示#}
+{#                //            x:100,#}
+{#                //            y:100#}
+{#            });#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('ok'), 'click', function () {#}
+{#            //自定义点击确定按钮之后得操作#}
+{#            let sheetName = $("#backReason").val();#}
+{#            alert(sheetName)#}
+{#            if(sheetName && sheetName.replace(' ', '')){#}
+{#                userId = $(this).data('user_id');#}
+{#                $.post('/my_music/new_sheet/', {'sheet_name':sheetName, 'user':userId} ,function(response,status,xhr) {#}
+{#                    $('.sheet-list').html(response);#}
+{#                })#}
+{#            }#}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{#        EventUtil.addEvent(EventUtil._$('cancel'), 'click', function () {#}
+{#            //自定义点击取消按钮之后得操作#}
+{##}
+{#            //隐藏弹出框#}
+{#            p.hide();#}
+{#        });#}
+{##}
+{#        //当按下ESC键时关闭弹出框#}
+{##}
+{#        EventUtil.addEvent(window, 'load', function () {#}
+{#            if ((isIE6 || isOpera) && p.isScroll != null && p.isScroll == 'enabled') {#}
+{#                EventUtil.addEvent(window, 'scroll', function () {#}
+{#                    setTimeout(function () {#}
+{#                        p.setPosition();#}
+{#                    }, 100);#}
+{#                });#}
+{#            }#}
+{#        });#}
+{##}
+{#        //单选按钮的点击切换事件#}
+{#        function openText(self) {#}
+{#            var value = $(self).val();#}
+{#            if ("true" == value) {#}
+{#                $('#reasonText').css("display", "");#}
+{#            } else {#}
+{#                $('#reasonText').css("display", "none");#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+
+    <div class="mod_playlist_text js_list">
+		<ul class="playlist__header">
+			<li class="playlist__header_name">歌单</li>
+			<li class="playlist__header_number">曲目数</li>
+			<li class="playlist__header_other">收听</li>
+		</ul>
+        <div class="like">
+            <div class="playlist_cover">
+                <a href="{% url 'my_music:my_music' %}?user={{ that_user.user_id }}"><img src="../../../static/images/cover_like.png" alt="我喜欢"></a>
+            </div>
+            <a href="{% url 'my_music:my_music' %}?user={{ that_user.user_id }}" class="playlist_my_like">喜欢</a>
+            <span class="my_like_num">{{ like_count }}首</span>
+        </div>
+        <div class="sheet-list">
+            <ul class="playlist_main">
+                {% for sheet in sheet_list %}
+                    <li class="playlist">
+                        <div class="playlist_cover">
+                        <a href="{% url 'my_music:my_music' %}?user={{ that_user.user_id }}&sheet={{ sheet.sheet_id }}"><img src="{% static sheet.sheet_pic %}" alt="我喜欢"></a>
+                        </div>
+                        <a href="{% url 'my_music:my_music' %}?user={{ that_user.user_id }}&sheet={{ sheet.sheet_id }}" class="playlist_my_like">{{ sheet.sheet_name }}</a>
+                        <span class="playlist_num">{{ sheet.sheet_num }}首</span>
+                        <div data-this_user="{{ this_user.user_id }}" data-that_user="{{ that_user.user_id }}" class="del-list-icon" data-sheet_id="{{ sheet.sheet_id }}"></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        <script>
+            function del_sheet(){
+                let sheet_id = $(this).data('sheet_id');
+                let this_user = $(this).data('this_user');
+                let that_user = $(this).data('that_user');
+                if(that_user === this_user){
+                    let signal = window.confirm('确定删除?');
+                    if(signal){
+                        $.post('/my_music/del_sheet/', {'sheet_id': sheet_id}, function (response, status, xhr) {
+                            $('.sheet-list').html(response);
+                        })
+                    }
+                }else{
+                    let myWindow = $('.windows');
+                    myWindow.find('span').html('只有主人才能创建歌单哦');
+                    myWindow.css('display', 'block');
+                    setTimeout(function () {
+                        myWindow.css('display', 'none');
+                    },1000)
+                }
+            }
+            $('.playlist').mouseover(function () {
+                $(this).find('.del-list-icon').css('display', 'block')
+            });
+
+            $('.playlist').mouseout(function () {
+                $(this).find('.del-list-icon').css('display', 'none')
+            });
+
+            $('.del-list-icon').click(del_sheet);
+        </script>
+        </div>
+	</div>
+{#    <script type="text/javascript" src="{% static "js/jquery-tanchuang.min.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "js/PopDrag.js" %}"></script>#}
+    <script type="text/javascript" src="{% static 'js/sheet.js' %}"></script>
+</div>
+{% endblock %}
+
+
+
+
+

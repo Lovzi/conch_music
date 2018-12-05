@@ -1,0 +1,76 @@
+{% load static %}
+<div class="singer_msg">
+    <div class="singer_pic"><img width="100px" src="{% static singer.singer_pic %}"></div>
+    <div class="singer_text"><p>{{ singer.singer_text }}</p></div>
+</div>
+<div class="music_list">
+    <div class="mod_songlist_toolbar">
+        <a href="{% url 'player:play_singer' %}?singer={{ singer.singer_name }}" class="mod_btn_green js_all_play" target="player_window" ><i class="mod_btn_green__icon_play"></i>播放全部</a>
+        <a href="#" class="mod_btn js_all_fav" ><i class="mod_btn__icon_add"></i>添加到</a>
+        <a href="#" class="mod_btn js_all_down" ><i class="mod_btn__icon_down"></i>下载</a>
+        <a href="#" class="mod_btn js_batch" ><i class="mod_btn__icon_batch"></i>批量操作</a>
+    </div>
+    <div class="list_header">
+        <ul class="select">
+            <li class="li_music"><label >歌曲</label></li>
+            <li class="li_singer"><label >歌手</label></li>
+            <li class="li_album"><label >专辑</label></li>
+            <li class="li_time"><label >时长</label></li>
+        </ul>
+    </div>
+    <div class="list_content">
+        {% for music in music_list %}
+            <div class="rows">
+                <ul>
+                    <li>
+                        <div class="music_name">
+                            <div class="select-music"></div>
+                            <a class="music_a">{{ music.music_name }}</a>
+                            <div class="download"><a class="download_a" href="{% static music.music_path %}" download="{{ music.music_name }}.mp3"></a></div>
+                            <div class="add" data-music_id="{{ music.list_id }}"><a class="add_a"></a></div>
+                            <div class="play" data-music_path="{{ music.music_path }}">
+                                <a href="{% url 'player:player' %}?list_id={{ music.list_id }}" class="play_a" target="player_window"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><div class="singer"><label>{{ music.singer }}</label></div></li>
+                    <li><div class="album"><a><p>{{ music.music_name | default:'无名'}}</p></a></div></li>
+                    <li><div class="time"><label>{{ music.length_time | default:'3:00'}}</label></div></li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="mod_page_nav"><strong class="current">1</strong>
+            <a href="" class="js_pageindex" data-index="2" hidefocus="">2</a>
+            <a href="" class="js_pageindex" data-index="3" hidefocus="">3</a>
+            <a href="" class="js_pageindex" data-index="4" hidefocus="">4</a><strong class="more">...</strong>
+            <a href="" class="js_pageindex" data-index="19" hidefocus="">19</a>
+            <a href="" class="next js_pageindex" data-index="2" title="下一页" hidefocus=""><span>&gt;</span></a>
+        </div>
+    </div>
+</div>
+<div class="add-to-sheet">
+</div>
+<script>
+        let ELEMENT = {
+            rows: '.rows',
+            linkDownload: '.download_a',
+            linkAdd: '.add_a',
+            linkPlay: '.play_a',
+            addToSheet: '.mod_btn js_all_fav',
+            singleDeleteMusic: '.single-delete-music',
+            time: '.time',
+        };
+        $(ELEMENT.rows).mouseover(function (e) {
+            $(this).find(ELEMENT.linkDownload).css('display', 'block');
+            $(this).find(ELEMENT.linkAdd).css('display', 'block');
+            $(this).find(ELEMENT.linkPlay).css('display', 'block');
+        });
+
+        $(ELEMENT.rows).mouseout(function (e) {
+            $(this).find(ELEMENT.linkDownload).css('display', 'none');
+            $(this).find(ELEMENT.linkAdd).css('display', 'none');
+            $(this).find(ELEMENT.linkPlay).css('display', 'none');
+        });
+</script>
+<script type="text/javascript" src="{% static 'js/music-list.js' %}"></script>
+
