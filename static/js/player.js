@@ -289,18 +289,6 @@ $(function () {
         $(this).find('span').css('color','#c9c9c9');
     });
 
-    // $(ELEMENT.btnFlush).click(function () {
-    //     $.ajax({
-    //          type: "get",
-    //          url: "/player/flush/",
-    //          success: function (response) {
-    //              if(response === 'ok'){
-    //                  $('.music_list').load(location.href + " .music_list")
-    //              }
-    //          }
-    //     });
-    // })
-
     // 删除按钮对应事件
     $(ELEMENT.btnDel).mouseover(function () {
         $(this).find('i').css('background-image','url("/static/images/del_2.png")');
