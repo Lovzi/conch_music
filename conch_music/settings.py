@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -89,10 +89,10 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ConchMusic',
+        'NAME': 'conch_music',
          # 开发环境可用，生产环境不要用
         'USER': 'root',
-        'PASSWORD': 'bamboo',
+        'PASSWORD': 'root',
         'HOST': '',
         # 'HOST': '',
         'PORT': '',
@@ -138,5 +138,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/bamboo/develop/django/ConchMusic/static/'
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (r'D:\ChengZhengWu\django\conch_music\static',)

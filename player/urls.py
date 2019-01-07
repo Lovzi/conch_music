@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
 
+app_name = 'player'
 urlpatterns = [
     url(r'^$', views.player, name='player'),
     url(r'^like/$',views.like, name='like'),

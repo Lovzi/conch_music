@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 from . import forms
 # django的重量级体现，登录注销直接提供封装好的类
 from django.http import HttpResponseRedirect, HttpResponse
