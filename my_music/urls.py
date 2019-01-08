@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from . import views
 
-
+app_name = 'my_music'
 urlpatterns = [
     url(r'^$', views.my_music, name='my_music'),
     url(r'^attention/$', views.attention, name='attention'),
