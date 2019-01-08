@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^+dt-at*s09-h51__!u6dd7apsj05*iyu#coic3bfsfxqpndev'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -89,10 +89,10 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ConchMusic',
+        'NAME': 'conch_music',
          # 开发环境可用，生产环境不要用
         'USER': 'root',
-        'PASSWORD': 'bamboo',
+        'PASSWORD': 'root',
         'HOST': '',
         # 'HOST': '',
         'PORT': '',
