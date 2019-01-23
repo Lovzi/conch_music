@@ -1,2 +1,19 @@
 from rest_framework import serializers
-from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from .models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'user_id',
+            'user_phone',
+            'user_nickname',
+            'pwd',
+            'sex',
+            'birthday',
+            'email',
+            'attention',
+            'Fan',
+            'image',
+        )

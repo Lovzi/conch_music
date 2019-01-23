@@ -7,6 +7,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
 from .models import *
 import random
+from accounts.models import User
+from singers.models import Singer
+
+
 
 def do_login(request):
     if request.method == 'POST':
@@ -43,7 +47,7 @@ def do_login(request):
 def index(request):
     # return redirect(reverse('discover:index'))
         search = forms.SearchForm()
-        recommend_singer_list = random.sample(list(SingerInfo.objects.all()), 8)
+        recommend_singer_list = random.sample(list(Singer.objects.all()), 8)
         recommend_music_list = random.sample(list(MusicList.objects.all()), 8)
         order_list = MusicList.objects.all().order_by('-play_No')[:24]
         order_list_1 = order_list[0:6]
@@ -91,7 +95,7 @@ def search(request):
     if search:
         # 搜索歌手
         if search_type == 'singer':
-            singer_list = SingerInfo.objects.filter(singer_name=search)
+            singer_list = Singer.objects.filter(singer_name=search)
             if singer_list:
                 music_list = MusicList.objects.filter(singer=search)
                 return render_to_response('discover/search_singer.html',
@@ -138,7 +142,7 @@ def singer(request, singer_name):
     
     music_list = MusicList.objects.filter(singer=singer_name)
     if music_list:
-        singer = SingerInfo.objects.filter(singer_name=singer_name)[0]
+        singer = Singer.objects.filter(singer_name=singer_name)[0]
         # try:
         #
         # except:

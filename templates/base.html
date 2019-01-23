@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -54,16 +54,16 @@
                                         <img class="login_img" src="{% static this_user.image %}">
                                     </a>
                                 {% else %}
-                                    <a class="login" id="loginButton" href="{% url 'login' %}"><span>登录</span></a>
+                                    <a class="login" id="loginButton" href="{% url 'accounts:login' %}"><span>登录</span></a>
 								{% endif %}
                                 <div class="clear"></div>
 								<!-- Login Ends Here -->
 							</li>
 							<li id="signupContainer">
 								{% if this_user.user_id %}
-                                    <a class="signup" id="signupButton" href="{% url 'logout' %}"><span>注销</span></a>
+                                    <a class="signup" id="signupButton" href="{% url 'accounts:logout' %}"><span>注销</span></a>
                                 {% else %}
-                                    <a class="signup" id="signupButton" href="{% url 'register' %}"><span>注册</span></a>
+                                    <a class="signup" id="signupButton" href="{% url 'accounts:register' %}"><span>注册</span></a>
                                 {% endif %}
 								<div class="clear"> </div>
 								<!-- Login Ends Here -->
@@ -89,15 +89,6 @@
 							</li>
 							<li>
 								<a href="{% url 'my_music:my_music' %}">我的音乐</a>
-							</li>
-							<li>
-								<a href="{% url 'client:client' %}">客户端</a>
-							</li>
-							<li>
-                                <a href="https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&clk1=09fc198b3e4407582d87b834bea2e066&keyword=%E8%80%B3%E6%9C%BA&page=0">商城</a>
-							</li>
-							<li>
-								<a href="{% url 'member:member' %}">VIP</a>
 							</li>
 						</ul>
 					</div>

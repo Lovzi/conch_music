@@ -21,9 +21,9 @@ from discover import views
 from my_music import views as music_views
 urlpatterns = [
     path(r'', views.index, name='index'),
+    path(r'accounts/', include('accounts.urls', namespace='accounts')),
     path(r'search/', views.search, name='search'),
     path(r'add_to_sheet/', music_views.add_to_sheet),
-    # url(r'^user/(?P<user_id>\d+)/$', views.user, name='user'),
     path(r'discover/', include('discover.urls', namespace='discover')),
     path(r'my_music/', include('my_music.urls', namespace='my_music')),
     path(r'player/', include('player.urls', namespace='player')),

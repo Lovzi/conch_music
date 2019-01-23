@@ -15,7 +15,7 @@ class User(models.Model):
 
     user_phone = models.CharField(max_length=11, unique=True)
 
-    user_nickname = models.CharField(max_length=20, unique=True)
+    user_nickname = models.CharField(max_length=20, unique=True, default=user_phone)
 
     pwd = models.CharField(max_length=16)
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'discover',
     'community',
     'singers',
@@ -85,8 +86,6 @@ WSGI_APPLICATION = 'conch_music.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-import pymysql
-pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
