@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'conch_music',
          # 开发环境可用，生产环境不要用
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'bamboo',
         'HOST': '',
         # 'HOST': '',
         'PORT': '',
