@@ -13,22 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include
 from django.contrib import admin
+from django.urls import path
+
 from discover import views
 from my_music import views as music_views
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^login/$', views.do_login, name='login'),
-    url(r'^register/$', views.do_register, name='register'),
-    url(r'^logout/$', views.do_logout, name='logout'),
-    url(r'^search/$', views.search, name='search'),
-    url(r'^add_to_sheet/', music_views.add_to_sheet),
+    path(r'', views.index, name='index'),
+    path(r'search/', views.search, name='search'),
+    path(r'add_to_sheet/', music_views.add_to_sheet),
     # url(r'^user/(?P<user_id>\d+)/$', views.user, name='user'),
-    url(r'^discover/', include('discover.urls', namespace='discover')),
-    url(r'^client/', include('client.urls', namespace='client')),
-    url(r'^member/', include('member.urls',namespace='member')),
-    url(r'^my_music/', include('my_music.urls', namespace='my_music')),
-    url(r'^player/', include('player.urls', namespace='player')),
-    url(r'^admin/', admin.site.urls)
+    path(r'discover/', include('discover.urls', namespace='discover')),
+    path(r'my_music/', include('my_music.urls', namespace='my_music')),
+    path(r'player/', include('player.urls', namespace='player')),
+    path(r'admin/', admin.site.urls)
 ]
