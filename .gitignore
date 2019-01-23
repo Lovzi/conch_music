@@ -1,34 +1,21 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-<<<<<<< HEAD
+
 static/music/
 .idea/
 
-*.pyc
-=======
+*.py[cod]
 
-将删除 .idea/
 
-#static/user_pic/
-#static/singer_pic/
-#static/images
+.venv/
+virtualenv/
+venv/
+env/
+
+
+
+static/user_pic/
+static/singer_pic/
+static/music/
 .project
 
-将删除 client/__pycache__/
-将删除 client/migrations/__pycache__/
-将删除 conch_music/__pycache__/
-将删除 discover/__pycache__/
-将删除 discover/migrations/__pycache__/
-将删除 discover/templatetags/__pycache__/
-将删除 member/__pycache__/`
-将删除 member/migrations/__pycache__/
-将删除 my_music/__pycache__/
-将删除 my_music/migrations/__pycache__/
-将删除 conch_music/__init__.pyc
-将删除 discover/migrations/0004_auto_20181022_1258.py
-将删除 discover/migrations/0005_musiclist_length_name.py
-将删除 discover/templates/discover/audio.html
-将删除 my_music/migrations/0001_initial.py
-将删除 static/test.html
-将删除 player/__pycache__/
-将删除 player/migrations/__pycache__/
